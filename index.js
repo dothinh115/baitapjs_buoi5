@@ -83,7 +83,6 @@ function quanLyTuyenSinh () {
 //TÍNH TIỀN ĐIỆN
 var formatVND = new Intl.NumberFormat("VN-vn");
 
-
 function tinhTienDien () {
     var ten = document.getElementById("tiendien__ten").value;
     var kw = document.getElementById("tiendien__kw").value * 1;
@@ -112,7 +111,93 @@ function tinhTienDien () {
         result.innerHTML = "Tên: " + ten + "; Tổng tiền điện: " + formatVND.format(tongTienDien); 
         result.className = "result text-white px-3 bg-success";
     }
-    
-    
+}
 
+// TÍNH THUẾ THU NHẬP CÁ NHÂN 
+function thueThuNhap () {
+    var ten = document.getElementById("thue__ten").value;
+    var luong = document.getElementById("thue__tien").value * 1;
+    var phuThuoc = document.getElementById("thue__phuthuoc").value * 1;
+    var result = document.getElementById("result__3");
+    var thuNhapChiuThue = 0;
+    var thueSuat = 0;
+
+    if(luong < 0 || phuThuoc < 0) {
+        result.innerHTML = "Nhập cho hợp lý";
+        result.className = "result text-white px-3 bg-danger";
+    }
+    else {
+        thuNhapChiuThue += luong - 4000000 - (phuThuoc*1600000);
+        if(thuNhapChiuThue > 960000000) {
+            thueSuat += thuNhapChiuThue*35/100;
+        }
+        else if(thuNhapChiuThue > 624000000) {
+            thueSuat += thuNhapChiuThue*30/100;
+        }
+        else if(thuNhapChiuThue > 384000000) {
+            thueSuat += thuNhapChiuThue*25/100;
+        }
+        else if (thuNhapChiuThue > 210000000) {
+            thueSuat += thuNhapChiuThue*20/100;
+        }
+        else if (thuNhapChiuThue > 120000000) {
+            thueSuat += thuNhapChiuThue*15/100;
+        }
+        else if (thuNhapChiuThue > 60000000) {
+            thueSuat += thuNhapChiuThue*10/100;
+        }
+        else {
+            thueSuat = thuNhapChiuThue*5/100;
+            if(thueSuat <= 0) {
+                thueSuat = 0;
+            }
+        }
+        result.innerHTML = "Tên: " + ten + "; Thuế thu nhập cá nhân: " + formatVND.format(thueSuat) + " VNĐ.";
+        result.className = "result text-white px-3 bg-success";
+    }
+}
+
+//TÍNH TIỀN CÁP
+var formatUSD = new Intl.NumberFormat("EN-en");
+
+function checkSelect() {
+    var value = document.getElementById("cap__loai").value;
+    var show = document.getElementById("cap__ketnoi");
+    if(value == "doanhnghiep") {
+        show.removeAttribute("disabled");
+    }
+    else {
+        show.setAttribute("disabled", "");
+    }
+}
+
+function tinhTienCap() {
+    var maKh = document.getElementById("cap__ma").value;
+    var loaiKh = document.getElementById("cap__loai").value;
+    var kenhCaoCap = document.getElementById("cap__kenh").value * 1;
+    var ketNoi = document.getElementById("cap__ketnoi").value * 1;
+    var tongChiPhi = 0;
+    var result = document.getElementById("result__4");
+
+    if(maKh == "") {
+        result.innerHTML = "Mã KH không hợp lệ!";
+        result.className = "result text-white px-3 bg-danger";
+    }
+    else{
+        if (loaiKh == "nhadan") {
+            tongChiPhi += 4.5 + 20.5 + kenhCaoCap*7.5;
+        }
+        else {
+            tongChiPhi += 15;
+            if (ketNoi > 10) {
+                tongChiPhi += 75 + (ketNoi-10)*5;
+            }
+            else {
+                tongChiPhi += ketNoi*75;
+            }
+            tongChiPhi += kenhCaoCap*50;
+        }
+        result.innerHTML = "Mã KH: " + maKh + "; Chi phí cáp: $" + formatUSD.format(tongChiPhi);
+        result.className = "result text-white px-3 bg-success";
+    }
 }
