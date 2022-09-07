@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <style>
+        h1 {
+            border-bottom: 1px solid #ccc;
+        }
+
+        .input-group {
+            margin-bottom: 10px;
+        }
+
+        .result {
+            height: 38px;
+            line-height: 38px;
+            border-radius: 5px;
+        }
+    </style>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="container">
+        <div class="row">
+            <h1 class="w-100">
+                QUẢN LÝ TUYỂN SINH
+            </h1>
+            <form class="row" onsubmit="quanLyTuyenSinh();return false;">
+                <div class="input-group col-4">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">
+                            Môn 1
+                        </span>
+                    </div>
+                    <input type="number" class="form-control" id="diem__1">
+                </div>
+                <div class="input-group col-4">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">
+                            Môn 2
+                        </span>
+                    </div>
+                    <input type="number" class="form-control" id="diem__2">
+                </div>
+                <div class="input-group col-4">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">
+                            Môn 3
+                        </span>
+                    </div>
+                    <input type="number" class="form-control" id="diem__3">
+                </div>
+                <div class="input-group col-4">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">
+                            Khu vực
+                        </span>
+                    </div>
+                    <select id="khuvuc" class="custom-select">
+                        <option value="x">Không có khu vực</option>
+                        <option value="A">Khu vực 1</option>
+                        <option value="B">Khu vực 2</option>
+                        <option value="C">Khu vực 3</option>
+                    </select>
+                </div>
+                <div class="input-group col-4">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">
+                            Đối tượng
+                        </span>
+                    </div>
+                    <select id="doituong" class="custom-select">
+                        <option value="0">Không có đối tượng</option>
+                        <option value="1">Đối tượng 1</option>
+                        <option value="2">Đối tượng 2</option>
+                        <option value="3">Đối tượng 3</option>
+                    </select>
+                </div>
+                <div class="input-group col-4">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">
+                            Điểm chuẩn
+                        </span>
+                    </div>
+                    <input type="number" class="form-control" id="diemchuan">
+                </div>
+                <div class="col-auto">
+                    <button class="btn btn-primary">
+                        Submit
+                    </button>
+                </div>
+                <div class="col-auto">
+                    <div id="result__1"></div>
+                </div>
+            </form>
+
+            <h1 class="w-100">
+                TÍNH TIỀN ĐIỆN
+            </h1>
+            <form class="row" onsubmit="tinhTienDien();return false;">
+                <div class="input-group col-5">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">
+                            Nhập tên
+                        </span>
+                    </div>
+                    <input type="text" class="form-control" id="tiendien__ten">
+                </div>
+                <div class="input-group col-5">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">
+                            Nhập số kw
+                        </span>
+                    </div>
+                    <input type="number" class="form-control" id="tiendien__kw">
+                </div>
+                <div class="col-auto">
+                    <button class="btn btn-primary">
+                        Submit
+                    </button>
+                </div>
+                <div class="col-auto">
+                    <div id="result__2"></div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="./index.js"></script>
+</body>
+</html>
